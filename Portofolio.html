@@ -8,7 +8,8 @@
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
     />
-    <title>Hacktive8 | Zidan Arrofi</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Hacktive8 | Assignment 2 | Zidan Arrofi</title>
   </head>
   <body>
     <div class="navbar">
@@ -22,12 +23,17 @@
     </div>
 
     <div class="card">
-      <img class="hacktivimg" src="img/hacktiv8.jpg" alt="hacktiv8" width="200" />
+      <img
+        class="hacktivimg"
+        src="img/hacktiv8.jpg"
+        alt="hacktiv8"
+        width="200"
+      />
       <div class="names">
-        <h2 class="name">Nama Anda</h2>
-        <h3 class="position">Frontend Engineer</h3>
-          <button class="tombol1">Kontak</button>
-          <button class="tombol2">Resume</button>
+        <h2 class="name" id="text-name">Zidan Arrofi</h2>
+        <h3 class="position" id="text-role">Frontend Engineer</h3>
+        <button class="tombol1">Kontak</button>
+        <button class="tombol2">Resume</button>
       </div>
       <div class="bio">
         <div class="textbio">
@@ -41,60 +47,121 @@
 
       <div class="resume">
         <div class="textresume">
-          <p>Full Time</p>
-          <p>21 Tahun</p>
-          <p>Bekasi, Indonesia</p>
-          <p>3 Tahun</p>
-          <p>developer@gmail.com</p>
+          <p id="text-avl">Full Time</p>
+          <p id="text-age">21 Tahun</p>
+          <p id="text-address">Karawang, Inodesia</p>
+          <p id="text-experience">3 Tahun</p>
+          <p id="text-email">zidan@gmail.com</p>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <form action="">
+      <form id="form-name" onsubmit="handleSubmit(event)">
         <div class="form-row">
           <div class="form-column">
             <div class="form-group">
               <label for="nama" class="form-label">Nama</label>
-              <input type="text" class="form-control" name="nama" />
+              <input name="name" class="form-control" id="input-name" />
             </div>
 
             <div class="form-group">
               <label for="role" class="form-label">Role</label>
-              <input type="text" class="form-control" name="role" />
+              <input name="name" class="form-control" id="input-role" />
             </div>
 
             <div class="form-group">
               <label for="availability" class="form-label">Availability</label>
-              <input type="text" class="form-control" name="availability" />
+              <input name="name" class="form-control" id="input-avl" />
             </div>
 
             <div class="form-group">
               <label for="age" class="form-label">Age</label>
-              <input type="text" class="form-control" name="age" />
+              <input name="name" class="form-control" id="input-age" />
             </div>
           </div>
 
           <div class="form-column2">
             <div class="form-group">
               <label for="lokasi" class="form-label">Lokasi</label>
-              <input type="text" class="form-control" name="lokasi" />
+              <input name="name" class="form-control" id="input-address" />
             </div>
 
             <div class="form-group">
               <label for="experience" class="form-label">Year Experience</label>
-              <input type="text" class="form-control" name="experience" />
+              <input name="name" class="form-control" id="input-experience" />
             </div>
 
             <div class="form-group">
               <label for="email" class="form-label">Email</label>
-              <input type="text" class="form-control" name="email" />
+              <input name="name" class="form-control" id="input-email" />
             </div>
 
-            <button class="tombol3">Submit</button>
+            <button
+              class="tombol3"
+              id="button-sumbit"
+              type="submit"
+              onclick="submitData()"
+            >
+              Submit
+            </button>
           </div>
         </div>
       </form>
     </div>
+
+    <!-- Javascript -->
+    <script>
+      let textName = document.getElementById("text-name");
+      let textRole = document.getElementById("text-role");
+      let textAvl = document.getElementById("text-avl");
+      let textAge = document.getElementById("text-age");
+      let textAddress = document.getElementById("text-address");
+      let textExperience = document.getElementById("text-experience");
+      let textEmail = document.getElementById("text-email");
+      document.getElementById("input-name").value = textName.innerText;
+      document.getElementById("input-role").value = textRole.innerText;
+      document.getElementById("input-avl").value = textAvl.innerText;
+      document.getElementById("input-age").value = textAge.innerText;
+      document.getElementById("input-address").value = textAddress.innerText;
+      document.getElementById("input-experience").value = textExperience.innerText;
+      document.getElementById("input-email").value = textEmail.innerText;
+
+      function handleSubmit(event) {
+        let inputName = document.getElementById("input-name");
+        let inputRole = document.getElementById("input-role");
+        let inputAvl = document.getElementById("input-avl");
+        let inputAge = document.getElementById("input-age");
+        let inputAddress = document.getElementById("input-address");
+        let inputExperience = document.getElementById("input-experience");
+        let inputEmail = document.getElementById("input-email");
+        document.getElementById("text-name").innerText = inputName.value;
+        document.getElementById("text-role").innerText = inputRole.value;
+        document.getElementById("text-avl").innerText = inputAvl.value;
+        document.getElementById("text-age").innerText = inputAge.value;
+        document.getElementById("text-address").innerText = inputAddress.value;
+        document.getElementById("text-experience").innerText = inputExperience.value;
+        document.getElementById("text-email").innerText = inputEmail.value;
+
+        const formname = document.getElementById("form-name");
+        const display = formname.style.display;
+        if (display == "block") {
+          formname.style.display = "none";
+        } else {
+          formname.style.display = "block";
+        }
+        event.preventDefault();
+      }
+
+      function submitData() {
+        swal({
+          title: "Yeayy!!",
+          text: "Simpan Data Berhasil",
+          icon: "success",
+          button: true,
+        });
+      }
+    </script>
+    <!-- End Javascript -->
   </body>
 </html>
